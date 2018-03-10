@@ -1,0 +1,9 @@
+extends base.pug
+
+block content
+	h2 So you want to make a Change #{user.name}?
+	p Use the form below to make an update to your name...
+
+	form(method="POST" action=`/users/${user.id}?_method=PATCH`)
+		input(type="text" name="name" placeholder="edit your name here dude")
+		button(type="submit") Update
