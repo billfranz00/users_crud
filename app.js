@@ -40,10 +40,10 @@ app.get('/users/:id', (req, res, next) => {
 });
 
 // Edit Single User Form Page
-// app.get('/users/:id/edit' (req, res, next) => {
-// 	const user = users.find(val => val.id === Number(req.params.id));
-// 	return res.render("edit", {user});
-// })
+app.get('/users/:id/edit', (req, res, next) => {
+	const user = users.find(val => val.id === Number(req.params.id));
+	return res.render("edit", {user});
+})
 
 // New User Form Submit
 app.post('/users', (req, res, next) => {
