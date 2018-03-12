@@ -25,6 +25,7 @@ app.get('/', (req, res, next) => {
 
 // Homepage
 app.get('/users', (req, res, next) => {
+	console.log(users);
 	return res.render("index", {users});
 });
 
@@ -53,6 +54,15 @@ app.post('/users', (req, res, next) => {
 		id // ES6 --> same as id: id
 	});
 	id++ // add 1 if another user is to be added (next user will have id = 2)
+	return res.redirect('/users');
+});
+
+// Edit User Info (Change Name)
+app.patch('/users/:id', (req, res, next) => {
+	console.log(req.params);
+	console.log(req.body);
+	const user = users.find(val => val.id === Number(req.params.id));
+	user.name = req.body.name;
 	return res.redirect('/users');
 });
 
