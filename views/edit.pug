@@ -7,3 +7,6 @@ block content
 	form(method="POST" action=`/users/${user.id}?_method=PATCH`)
 		input(type="text" name="name" placeholder="edit your name here dude")
 		button(type="submit") Update
+	form(class="margin-top" method="POST" action=`/users/${user.id}?_method=DELETE`)
+		label Delete Me... ;) 
+		button(type="submit") X

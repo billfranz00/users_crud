@@ -12,6 +12,8 @@ app.use(methodOverride("_method"));
 
 // Templating Engine - PUG
 app.set("view engine", "pug");
+
+// Static Assets
 app.use(express.static(__dirname + '/assets'));
 
 // Data Storage (Without Database)
@@ -25,7 +27,6 @@ app.get('/', (req, res, next) => {
 
 // Homepage
 app.get('/users', (req, res, next) => {
-	console.log(users);
 	return res.render("index", {users});
 });
 
@@ -59,10 +60,19 @@ app.post('/users', (req, res, next) => {
 
 // Edit User Info (Change Name)
 app.patch('/users/:id', (req, res, next) => {
-	console.log(req.params);
-	console.log(req.body);
 	const user = users.find(val => val.id === Number(req.params.id));
+	console.log(users);
+	console.log(user);
 	user.name = req.body.name;
+	console.log(users);
+	console.log(user)
+	return res.redirect('/users');
+});
+
+// Delete a User
+app.delete('/users/:id', (req, res, next) => {
+	const userIndex = users.findIndex(val => val.id === Number(req.params.id));
+	users.splice(userIndex, 1);
 	return res.redirect('/users');
 });
 
