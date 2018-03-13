@@ -49,7 +49,6 @@ app.get('/users/:id/edit', (req, res, next) => {
 
 // New User Form Submit
 app.post('/users', (req, res, next) => {
-	console.log(req.body);
 	users.push({
 		name: req.body.name,
 		id // ES6 --> same as id: id
@@ -61,11 +60,7 @@ app.post('/users', (req, res, next) => {
 // Edit User Info (Change Name)
 app.patch('/users/:id', (req, res, next) => {
 	const user = users.find(val => val.id === Number(req.params.id));
-	console.log(users);
-	console.log(user);
 	user.name = req.body.name;
-	console.log(users);
-	console.log(user)
 	return res.redirect('/users');
 });
 

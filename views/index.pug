@@ -1,7 +1,9 @@
 extends base.pug
 
 block content
+	a(class="margin-top" href="../users/new") Add a new user dude
 	h2 Look at all these users...
 	ul
 		each user in users
-			li #{user.name} has the RAD Id of #{user.id}
+			li #{user.name} has the RAD Id of #{user.id}: 
+				a(href=`users/${user.id}`) Look me up...
